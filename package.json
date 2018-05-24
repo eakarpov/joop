@@ -2,9 +2,11 @@
   "name": "joop",
   "version": "0.0.1",
   "description": "class-oriented javascript programming",
-  "main": "index.ts",
+  "main": "build/index.js",
   "scripts": {
-    "test": "test"
+    "build": "npm i && tsc",
+    "pretest": "rm -rf build && npm run build",
+    "test": "mocha --require ts-node/register --ui mocha-typescript ./**/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/eakarpov/joop/issues"
   },
-  "homepage": "https://github.com/eakarpov/joop#readme"
+  "homepage": "https://github.com/eakarpov/joop#readme",
+  "devDependencies": {
+    "@types/mocha": "^5.2.0",
+    "mocha": "^5.2.0",
+    "mocha-typescript": "^1.1.14",
+    "ts-node": "^6.0.4",
+    "typescript": "^2.8.3"
+  }
 }
