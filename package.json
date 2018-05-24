@@ -1,0 +1,24 @@
+{
+  "name": "joop",
+  "version": "0.0.1",
+  "description": "class-oriented javascript programming",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eakarpov/joop.git"
+  },
+  "keywords": [
+    "js",
+    "oop",
+    "ts"
+  ],
+  "author": "eakarpov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eakarpov/joop/issues"
+  },
+  "homepage": "https://github.com/eakarpov/joop#readme"
+}
