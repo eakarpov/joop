@@ -1,13 +1,16 @@
+import * as util from 'util';
+
 export default function dataclass<T extends {new(...args:any[]):{}}>(constructor: T) {
-  console.log(new constructor());
-  // constructor.prototype.toString = () => "asdad";
-  // constructor.prototype.toJSON = () => "sfffgd";
   return class extends constructor {
-    toString() {
-      return ";lk;lk;lk;lk"
+    /** Method for representation of object while usijng confole.log */
+    [util.inspect.custom](depth, options) {
+      return this.toString();
     }
-    toJSON() {
-      return { aaa: "asdad "};
+    /**
+     * String representation of the class;
+     */
+    toString() {
+      return `${constructor.name} [${Object.keys(this).map(key => `${key} := ${this[key]}`)}]`;
     }
   }
 }
