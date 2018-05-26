@@ -1,7 +1,7 @@
-import dataclass from "../build/dataclass";
+import {dataclass} from "../build/dataclass";
 import {suite, test} from "mocha-typescript";
 
-@dataclass({}) class A {
+@dataclass class A {
   some: string = "asdad";
 }
 

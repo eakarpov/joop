@@ -5,8 +5,18 @@ export interface DataClassProps {
   log?: false;
 }
 
-export default function (props?: DataClassProps) { 
-  return function dataclass<T extends {new(...args:any[]):{}}>(constructor: T) {
+export function dataclass(props: DataClassProps): Function;
+export function dataclass(target: {new(...args:any[]):{}}): Function;
+export function dataclass(arg: any): Function {
+  if (typeof arg === 'function') {
+    return annotate({})(arg);
+  } else {
+    const options: DataClassProps = Object.assign({}, arg);
+    return (target: {new(...args:any[]):{}}) => annotate(options)(target);
+  }
+}
+function annotate(props?: DataClassProps) {
+  return function annotate<T extends {new(...args:any[]):{}}>(constructor: T) {
     const Constructor: any = (function () {
       function Constructor() {
         const a = new constructor(arguments);
@@ -27,7 +37,7 @@ export default function (props?: DataClassProps) {
       toString() {
         return `${constructor.name} [${
           Object.keys(this).map(key => `${key} := ${this[key]}`)
-        } ${Object.keys(A.prototype).map(
+        }${Object.keys(A.prototype).map(
           key => key === 'constructor' ? '' : `${key} := function () { [native code] }`)}]`;
       }
     };
