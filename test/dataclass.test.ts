@@ -1,11 +1,18 @@
 import {dataclass} from "../build/dataclass";
 import {suite, test} from "mocha-typescript";
+import * as assert from "assert";
 
 @dataclass class A {
   some: string = "asdad";
 }
 
-@dataclass({ eq: false }) class B {
+@dataclass({ equalsTo: false }) class B {
+  next: string = "fdsfds";
+  some: boolean = true;
+  method: () => "asd";
+}
+
+@dataclass({ log: false }) class C {
   next: string = "fdsfds";
   some: boolean = true;
   method: () => "asd";
@@ -22,9 +29,15 @@ import {suite, test} from "mocha-typescript";
     console.log(b);
   }
 
+  // does not work
   @test freezeObject() {
     const a = new A();
-    // a['t'] = "3";
+    a['t'] = "3";
     console.log(a);
+  }
+
+  @test standardConsoleLog() {
+    const c = new C();
+    console.log(c);
   }
 }
