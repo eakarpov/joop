@@ -5,7 +5,7 @@ Class-oriented programming implemented for JavaScript (TypeScript).
 ## Usage
 
 ```typescript
-import {dataclass} from 'joop';
+import dataclass from 'joop';
 
 @dataclass
 class A {
