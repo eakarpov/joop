@@ -4,8 +4,9 @@
   "description": "class-oriented javascript programming",
   "main": "build/index.js",
   "scripts": {
-    "build": "npm i && tsc",
-    "pretest": "rm -rf build && npm run build",
+    "build": "rm -rf build && npm i && tsc",
+    "build-win": "npm i && tsc",
+    "pretest": "npm run build-win",
     "test": "mocha --require ts-node/register --ui mocha-typescript ./**/*.test.ts"
   },
   "repository": {
