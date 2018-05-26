@@ -5,7 +5,7 @@ Class-oriented programming implemented for JavaScript (TypeScript).
 ## Usage
 
 ```typescript
-import dataclass from 'joop';
+import {dataclass} from 'joop';
 
 @dataclass
 class A {
@@ -20,11 +20,16 @@ class A {
 
 ## Features
 
-1. toString() override
+* immutable objects
+    - objects produced by classed with dataclass annotation are immutable.
+
+* toString() override
+    - method toString is injected automatically for string representation of the object
 
 
-
-2. custom representation of an object in console.log
+* custom representation of an object in console.log
+    - uses toString() method instead of standard mechanism.
+    - can be turned off via { log: false } parameter in annotation
 
 
 
