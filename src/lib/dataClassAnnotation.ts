@@ -11,9 +11,10 @@ export default function annotate(props?: DataClassProps) {
         Object.keys(a).forEach(k => {
           this[k] = a[k];
         });
+        Object.freeze(this);
       }
       Constructor.prototype = constructor.prototype;
-      return Object.freeze(Constructor);
+      return Constructor;
     })();
 
     // new class to be returned
@@ -35,10 +36,10 @@ export default function annotate(props?: DataClassProps) {
       }
     };
     if (props && props.log === false) {
-      A.prototype[util.inspect.custom] = void 0;
+      delete A.prototype[util.inspect.custom];
     }
     if (props && props.equalsTo === false) {
-      A.prototype.equalsTo = void 0;
+      delete A.prototype.equalsTo;
     }
     return A;
   }

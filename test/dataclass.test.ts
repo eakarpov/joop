@@ -32,8 +32,12 @@ import * as assert from "assert";
   // does not work
   @test freezeObject() {
     const a = new A();
-    a['t'] = "3";
-    console.log(a);
+    assert.deepStrictEqual(Object.isFrozen(a), true);
+  }
+
+  @test freezeObject2() {
+    const b = new B();
+    assert.deepStrictEqual(Object.isFrozen(b), true);
   }
 
   @test standardConsoleLog() {
